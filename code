@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web;
+using static System.Net.WebRequestMethods;
+
+namespace jun1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbersToSumStart;
+            int[] numbersToSum = new int[1];
+            string command;
+            string sumCommand = "sum";
+            int sum;
+            int sumStartNumber = 0;
+            string exitCommand = "exit";
+            bool isWorking = true;
+
+            while (isWorking)
+            {
+                command = Console.ReadLine();
+                if (command == exitCommand)
+                {
+                    isWorking = false;
+                }
+                else if(command == sumCommand)
+                {
+                    sum = sumStartNumber;
+
+                    for (int i = 0; i < numbersToSum.Length; i++)
+                    {
+                        sum += numbersToSum[i];
+                    }
+                    Console.WriteLine(sum);
+                }
+                else
+                {
+                    numbersToSumStart = new int[numbersToSum.Length + 1];
+                    
+                    for (int i = 0; i < numbersToSum.Length; i++)
+                    {
+                        numbersToSum[i] = Convert.ToInt32(command);
+                        numbersToSumStart[i] = numbersToSum[i];
+                    }
+
+                    numbersToSum = numbersToSumStart;
+                }
+            }
+        }
+    }
+}
