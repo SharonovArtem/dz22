@@ -12,13 +12,10 @@ namespace jun1
     internal class Program
     {
         static void Main(string[] args)
-        {
-            int[] numbersToSumStart;
-            int[] numbersToSum = new int[1];
+        {            
+            int[] numbers = new int[1];
             string command;
             string sumCommand = "sum";
-            int sum;
-            int sumStartNumber = 0;
             string exitCommand = "exit";
             bool isWorking = true;
 
@@ -29,27 +26,29 @@ namespace jun1
                 {
                     isWorking = false;
                 }
-                else if(command == sumCommand)
+                else if (command == sumCommand)
                 {
-                    sum = sumStartNumber;
+                    int sum = 0;
 
-                    for (int i = 0; i < numbersToSum.Length; i++)
+                    for (int i = 0; i < numbers.Length; i++)
                     {
-                        sum += numbersToSum[i];
+                        sum += numbers[i];
                     }
+
                     Console.WriteLine(sum);
                 }
                 else
                 {
-                    numbersToSumStart = new int[numbersToSum.Length + 1];
-                    
-                    for (int i = 0; i < numbersToSum.Length; i++)
+                    int[] numbersToSumStart;
+                    numbersToSumStart = new int[numbers.Length + 1];
+
+                    for (int i = 0; i < numbers.Length; i++)
                     {
-                        numbersToSum[i] = Convert.ToInt32(command);
-                        numbersToSumStart[i] = numbersToSum[i];
+                        numbers[i] = Convert.ToInt32(command);
+                        numbersToSumStart[i] = numbers[i];
                     }
 
-                    numbersToSum = numbersToSumStart;
+                    numbers = numbersToSumStart;
                 }
             }
         }
